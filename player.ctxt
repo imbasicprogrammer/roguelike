@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=player
+comment0.text=\r\n\ Kelas\ Player\ adalah\ ANAK\ dari\ kelas\ Character.\r\n\ Dia\ mewarisi\ semua\ logika\ 'animate()'.\r\n\ Tugasnya\ hanya\ menyediakan\ gambar\ dan\ logika\ input.\r\n
+comment1.params=
+comment1.target=player()
+comment1.text=\r\n\ Constructor\ Player\:\r\n\ Mengatur\ stats\ spesifik\ untuk\ player.\r\n\ super()\ akan\ memanggil\ constructor\ Character,\ yang\ akan\r\n\ memanggil\ 'loadImages()'\ di\ bawah.\r\n
+comment2.params=
+comment2.target=void\ loadImages()
+comment2.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 1\:\r\n\ Mengisi\ semua\ array\ 'protected'\ dari\ induk\r\n\ dengan\ gambar-gambar\ milik\ Player.\r\n
+comment3.params=
+comment3.target=void\ determineState()
+comment3.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 2\:\r\n\ Ini\ adalah\ method\ 'checkInput()'\ Anda\ sebelumnya.\r\n\ Tugasnya\ hanya\ mengatur\ 'currentState',\ 'isAttacking',\ dan\ 'setLocation'.\r\n\ Dia\ tidak\ perlu\ tahu\ cara\ menganimasikannya.\r\n
+numComments=4

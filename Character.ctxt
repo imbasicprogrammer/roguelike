@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Character
+comment0.text=\r\n\ Kelas\ template\ (Induk)\ untuk\ semua\ karakter\ yang\ bisa\ beranimasi.\r\n\ Kelas\ ini\ berisi\ 'mesin'\ animasi.\r\n\ Kelas\ anak\ (seperti\ Player\ atau\ Enemy)\ HANYA\ perlu\ menyediakan\ gambar\r\n\ dan\ logika\ untuk\ mengubah\ status.\r\n
+comment1.params=
+comment1.target=Character()
+comment1.text=\r\n\ Constructor\ Induk\:\r\n\ Memanggil\ method\ 'loadImages()'\ yang\ akan\ diisi\ oleh\ anak.\r\n\ Lalu,\ mengatur\ gambar\ awal.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ 'act()'\ final\ berarti\ anak\ tidak\ bisa\ mengubah\ urutan\ ini.\r\n\ 1.\ Anak\ menentukan\ status\ (determineState).\r\n\ 2.\ Induk\ memutar\ animasi\ (animate).\r\n
+comment3.params=
+comment3.target=void\ loadImages()
+comment3.text=\r\n\ METHOD\ ABSTRAK\:\r\n\ Anak\ WAJIB\ mengisi\ method\ ini.\r\n\ Gunakan\ method\ ini\ untuk\ mengisi\ semua\ array\ gambar\ (idleImages,\ walkImages,\ dll.)\r\n
+comment4.params=
+comment4.target=void\ determineState()
+comment4.text=\r\n\ METHOD\ ABSTRAK\:\r\n\ Anak\ WAJIB\ mengisi\ method\ ini.\r\n\ Gunakan\ method\ ini\ untuk\ cek\ input\ keyboard\ (Player)\ atau\ logika\ AI\ (Enemy).\r\n\ Method\ ini\ harus\ mengatur\ 'currentState'\ dan\ 'isAttacking'.\r\n
+comment5.params=
+comment5.target=void\ animate()
+comment5.text=\r\n\ Method\ 'animate()'\ ini\ 100%\ modular.\r\n\ Dia\ hanya\ peduli\ pada\ 'currentState'\ dan\ 'isAttacking',\r\n\ tidak\ peduli\ siapa\ yang\ mengaturnya\ (Player\ atau\ Enemy).\r\n
+numComments=6
