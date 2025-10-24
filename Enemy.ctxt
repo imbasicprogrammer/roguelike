@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Enemy
+comment0.text=\r\n\ Kelas\ Induk\ ABSTRAK\ untuk\ semua\ musuh.\r\n\ Dia\ mewarisi\ 'Character'\ (animasi,\ HP,\ dll.)\r\n\ *\ Tugas\ utamanya\ adalah\ menangani\ apa\ yang\ terjadi\ saat\ musuh\ mati,\r\n\ yaitu\ memberi\ tahu\ 'Dungeon'\ (manajer\ gelombang)\ dan\ menghilang.\r\n
+comment1.params=
+comment1.target=void\ onDeath()
+comment1.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ (dari\ Character)\:\r\n\ *\ Inilah\ yang\ terjadi\ saat\ HP\ musuh\ <\=\ 0.\r\n\ Ini\ adalah\ logika\ yang\ SAMA\ untuk\ SEMUA\ musuh.\r\n
+numComments=2

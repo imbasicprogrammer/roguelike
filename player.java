@@ -1,160 +1,112 @@
 import greenfoot.*;
 
 /**
- * Kelas Player adalah ANAK dari kelas Character.
- * Dia mewarisi semua logika 'animate()'.
- * Tugasnya hanya menyediakan gambar dan logika input.
+ * KELAS INDUK BARU untuk SEMUA karakter yang bisa dimainkan.
+ * (Ini adalah file 'player.java' Anda yang sudah di-refactor).
+ * Kelas ini 'abstract' karena dia tidak tahu cara menyerang.
  */
-public class player extends Character
+public abstract class player extends Character
 {
-    /**
-     * Constructor Player:
-     * Mengatur stats spesifik untuk player.
-     * super() akan memanggil constructor Character, yang akan
-     * memanggil 'loadImages()' di bawah.
-     */
-    public player() {
-        super(); // Wajib panggil constructor Induk
-        
-        // Atur stats spesifik untuk Player
-        this.speed = 1;
-        this.animationDelay = 10;
-    }
+    protected int attackCooldown = 0;
+    protected int maxAttackCooldown = 30; // 0.5 detik, bisa di-override anak
 
     /**
-     * IMPLEMENTASI METHOD WAJIB 1:
-     * Mengisi semua array 'protected' dari induk
-     * dengan gambar-gambar milik Player.
+     * METHOD ABSTRAK BARU:
+     * Ini adalah "kontrak". Setiap anak (Knight, Ranger)
+     * WAJIB mengisi metode ini dengan logika serangan mereka.
+     * @param state Arah serangan (misal "AttackRight")
+     */
+    protected abstract void performAttack(String state);
+
+    /**
+     * IMPLEMENTASI WAJIB (dari Character):
+     * Ini adalah logika kematian untuk SEMUA player.
      */
     @Override
-    protected void loadImages() {
-        String folderPath = "player/";
-        
-        // --- (Ini adalah SEMUA kode 'load' dari constructor Anda sebelumnya) ---
-        
-        int idleFrameCount = 12;
-        idleImages = new GreenfootImage[idleFrameCount];
-        for (int i = 0; i < idleFrameCount; i++) {
-            String filename = "player/idle/idle" + i + ".png";
-            idleImages[i] = new GreenfootImage(filename);
-        }
-        
-        int walkRightFrameCount = 5; 
-        walkRightImages = new GreenfootImage[walkRightFrameCount];
-        for (int i = 0; i < walkRightFrameCount; i++) {
-            String filename = folderPath + "walk/" + "walk_right" + i + ".png"; 
-            walkRightImages[i] = new GreenfootImage(filename);
-        }
-        
-        int walkLeftFrameCount = 5; 
-        walkLeftImages = new GreenfootImage[walkLeftFrameCount];
-        for (int i = 0; i < walkLeftFrameCount; i++) {
-            String filename = folderPath + "walk/" + "walk_left" + i + ".png"; 
-            walkLeftImages[i] = new GreenfootImage(filename);
-        }
-        
-        int walkUpFrameCount = 5;
-        walkUpImages = new GreenfootImage[walkUpFrameCount];
-        for (int i = 0; i < walkUpFrameCount; i++) {
-            String filename = folderPath + "walk/" + "walk_up" + i + ".png";
-            walkUpImages[i] = new GreenfootImage(filename);
-        }
-
-        int walkDownFrameCount = 5;
-        walkDownImages = new GreenfootImage[walkDownFrameCount];
-        for (int i = 0; i < walkDownFrameCount; i++) {
-            String filename = folderPath + "walk/" + "walk_down" + i + ".png";
-            walkDownImages[i] = new GreenfootImage(filename);
-        }
-        
-        int attackRightFrameCount = 5; 
-        attackRightImages = new GreenfootImage[attackRightFrameCount];
-        for (int i = 0; i < attackRightFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_right" + i + ".png"; 
-            attackRightImages[i] = new GreenfootImage(filename);
-        }
-        
-        int attackLeftFrameCount = 5; 
-        attackLeftImages = new GreenfootImage[attackLeftFrameCount];
-        for (int i = 0; i < attackLeftFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_left" + i + ".png"; 
-            attackLeftImages[i] = new GreenfootImage(filename);
-        }
-        
-        int attackUpFrameCount = 5;
-        attackUpImages = new GreenfootImage[attackUpFrameCount];
-        for (int i = 0; i < attackUpFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_up" + i + ".png";
-            attackUpImages[i] = new GreenfootImage(filename);
-        }
-
-        int attackDownFrameCount = 5;
-        attackDownImages = new GreenfootImage[attackDownFrameCount];
-        for (int i = 0; i < attackDownFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_down" + i + ".png";
-            attackDownImages[i] = new GreenfootImage(filename);
-        }
+    protected void onDeath() {
+        // Animasi kematian sudah selesai diputar.
+        getWorld().showText("GAME OVER", 400, 300);
+        Greenfoot.stop();
     }
-
+    
     /**
-     * IMPLEMENTASI METHOD WAJIB 2:
-     * Ini adalah method 'checkInput()' Anda sebelumnya.
-     * Tugasnya hanya mengatur 'currentState', 'isAttacking', dan 'setLocation'.
-     * Dia tidak perlu tahu cara menganimasikannya.
+     * IMPLEMENTASI WAJIB (dari Character):
+     * Ini adalah "Otak" bersama untuk semua Player.
+     * Mengelola input gerak, cooldown, dan memanggil 'performAttack()'.
      */
     @Override
     protected void determineState() {
-        // --- (Ini adalah SEMUA kode 'checkInput()' Anda sebelumnya) ---
-        
-        if (isAttacking) {
-            return; // Mengunci input saat sedang menyerang
+        // 1. Logika Cooldown
+        if (attackCooldown > 0) {
+            attackCooldown--;
+        }
+
+        // 2. Kunci Input Gerak/Serang
+        if (isAttacking || isHurt) {
+            return; 
         }
         
-        String newState = "idle"; // Asumsi awal: diam
+        // 3. Logika Input Gerakan (Tombol Panah)
+        String newState = "idle";
+        int dx = 0;
+        int dy = 0;
         
         if (Greenfoot.isKeyDown("right")) {
             newState = "walkRight"; 
-            setLocation(getX() + speed, getY()); // Bergerak ke kanan
+            dx = speed;
         }
         else if (Greenfoot.isKeyDown("left")) {
             newState = "walkLeft"; 
-            setLocation(getX() - speed, getY()); // Bergerak ke kiri
+            dx = -speed;
         }
         else if (Greenfoot.isKeyDown("up")) {
             newState = "walkUp"; 
-            setLocation(getX(), getY() - speed); // Bergerak ke atas
+            dy = -speed;
         }
         else if (Greenfoot.isKeyDown("down")) {
             newState = "walkDown"; 
-            setLocation(getX(), getY() + speed); // Bergerak ke bawah
+            dy = speed;
         }
         
-        // Cek Attack (Tombol WASD)
-        if (Greenfoot.isKeyDown("d") && !isAttacking) {
-            newState = "AttackRight"; 
-            isAttacking = true;
-        }
-        else if (Greenfoot.isKeyDown("a")&& !isAttacking) {
-            newState = "AttackLeft"; 
-            isAttacking = true;
-        }
-        else if (Greenfoot.isKeyDown("w")&& !isAttacking) {
-            newState = "AttackUp";
-            isAttacking = true;
-        }
-        else if (Greenfoot.isKeyDown("s")&& !isAttacking) {
-            newState = "AttackDown"; 
-            isAttacking = true;
+        moveWithCollision(dx, dy);
+        
+        // 4. Logika Input Serangan (Tombol WASD)
+        if (attackCooldown == 0) 
+        {
+            String attackState = ""; // Arah serangan
+            
+            if (Greenfoot.isKeyDown("d")) {
+                attackState = "AttackRight";
+            }
+            else if (Greenfoot.isKeyDown("a")) {
+                attackState = "AttackLeft";
+            }
+            else if (Greenfoot.isKeyDown("w")) {
+                attackState = "AttackUp";
+            }
+            else if (Greenfoot.isKeyDown("s")) {
+                attackState = "AttackDown";
+            }
+
+            // Jika tombol serangan ditekan:
+            if (!attackState.isEmpty()) {
+                newState = attackState;     // Set animasi
+                isAttacking = true;         // Kunci input
+                attackCooldown = maxAttackCooldown; // Reset cooldown
+                
+                // PANGGIL METODE ABSTRAK!
+                // Java akan otomatis memanggil 'performAttack'
+                // milik Ranger atau Knight.
+                performAttack(attackState);
+            }
         }
         
-        // Reset animasi jika status berubah
+        // 5. Reset Animasi
         if ( !currentState.equals(newState) ) {
             currentState = newState;
             currentImage = 0;
             animationTimer = 0; 
         }
-        
-        // Reset khusus saat attack dimulai
         if (isAttacking) {
             currentImage = 0;
             animationTimer = 0;

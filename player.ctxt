@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=player
-comment0.text=\r\n\ Kelas\ Player\ adalah\ ANAK\ dari\ kelas\ Character.\r\n\ Dia\ mewarisi\ semua\ logika\ 'animate()'.\r\n\ Tugasnya\ hanya\ menyediakan\ gambar\ dan\ logika\ input.\r\n
-comment1.params=
-comment1.target=player()
-comment1.text=\r\n\ Constructor\ Player\:\r\n\ Mengatur\ stats\ spesifik\ untuk\ player.\r\n\ super()\ akan\ memanggil\ constructor\ Character,\ yang\ akan\r\n\ memanggil\ 'loadImages()'\ di\ bawah.\r\n
+comment0.text=\r\n\ KELAS\ INDUK\ BARU\ untuk\ SEMUA\ karakter\ yang\ bisa\ dimainkan.\r\n\ (Ini\ adalah\ file\ 'player.java'\ Anda\ yang\ sudah\ di-refactor).\r\n\ Kelas\ ini\ 'abstract'\ karena\ dia\ tidak\ tahu\ cara\ menyerang.\r\n
+comment1.params=state
+comment1.target=void\ performAttack(java.lang.String)
+comment1.text=\r\n\ METHOD\ ABSTRAK\ BARU\:\r\n\ Ini\ adalah\ "kontrak".\ Setiap\ anak\ (Knight,\ Ranger)\r\n\ WAJIB\ mengisi\ metode\ ini\ dengan\ logika\ serangan\ mereka.\r\n\ @param\ state\ Arah\ serangan\ (misal\ "AttackRight")\r\n
 comment2.params=
-comment2.target=void\ loadImages()
-comment2.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 1\:\r\n\ Mengisi\ semua\ array\ 'protected'\ dari\ induk\r\n\ dengan\ gambar-gambar\ milik\ Player.\r\n
+comment2.target=void\ onDeath()
+comment2.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ logika\ kematian\ untuk\ SEMUA\ player.\r\n
 comment3.params=
 comment3.target=void\ determineState()
-comment3.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 2\:\r\n\ Ini\ adalah\ method\ 'checkInput()'\ Anda\ sebelumnya.\r\n\ Tugasnya\ hanya\ mengatur\ 'currentState',\ 'isAttacking',\ dan\ 'setLocation'.\r\n\ Dia\ tidak\ perlu\ tahu\ cara\ menganimasikannya.\r\n
+comment3.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ "Otak"\ bersama\ untuk\ semua\ Player.\r\n\ Mengelola\ input\ gerak,\ cooldown,\ dan\ memanggil\ 'performAttack()'.\r\n
 numComments=4
