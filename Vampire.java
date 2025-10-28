@@ -9,9 +9,7 @@ import java.util.List;
  */
 public class Vampire extends Enemy // (GANTI JADI 'extends Enemy' SETELAH 'Enemy.java' DIBUAT)
 {
-    /**
-     * Constructor Goblin
-     */
+    
     public Vampire() {
         super(); // Wajib panggil constructor Induk (Character)
         
@@ -107,6 +105,20 @@ public class Vampire extends Enemy // (GANTI JADI 'extends Enemy' SETELAH 'Enemy
             String filename = folderPath + "Attack/" + "VampireAttack" + i + ".png";
             attackDownImages[i] = new GreenfootImage(filename);
         } 
+        
+        int hurtFrameCount = 4; // Contoh
+        hurtImages = new GreenfootImage[hurtFrameCount];
+        for (int i = 0; i < hurtFrameCount; i++) {
+            String filename = folderPath + "Hurt/" + "VampireHurt" + i + ".png";
+            hurtImages[i] = new GreenfootImage(filename);
+        }
+        
+        int deathFrameCount = 11; // Contoh
+        deathImages = new GreenfootImage[deathFrameCount];
+        for (int i = 0; i < deathFrameCount; i++) {
+            String filename = folderPath + "Death/" + "VampireDeath" + i + ".png";
+            deathImages[i] = new GreenfootImage(filename);
+        }
         // (Pastikan Bos setidaknya mengisi 'idleImages' agar tidak error)
         // Jika Bos belum punya gambar, isi 'idleImages' saja untuk tes:
         if (idleImages == null) {
@@ -209,16 +221,5 @@ public class Vampire extends Enemy // (GANTI JADI 'extends Enemy' SETELAH 'Enemy
      * * Inilah yang terjadi saat HP musuh <= 0.
      * Ini adalah logika yang SAMA untuk SEMUA musuh.
      */
-    @Override
-    protected void onDeath()
-    {
-        // 1. Beri tahu Dungeon (World) bahwa 1 musuh telah kalah
-        // Ini PENTING untuk Manajer Gelombang (Wave Manager)
-        if (getWorld() instanceof Dungeons) {
-            ((Dungeons)getWorld()).enemyDefeated();
-        }
-        
-        // 2. Hilangkan diri dari dunia
-        getWorld().removeObject(this);
-    }
+   
 }

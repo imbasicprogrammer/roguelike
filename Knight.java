@@ -7,7 +7,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Villager extends player 
+public class Knight extends player 
 {
     // instance variables - replace the example below with your own
     private int attackDamage = 40; // Knight punya damage besar
@@ -15,11 +15,11 @@ public class Villager extends player
     /**
      * Constructor for objects of class Villager
      */
-    public Villager()
+    public Knight()
     {
         super();
         this.speed = 2; // Knight standar
-        this.maxHealth = 150; // Knight lebih tebal
+        this.maxHealth = 500; // Knight lebih tebal
         this.health = this.maxHealth;
         this.maxAttackCooldown = 40; // Serangan pedang lebih lambat
     }
@@ -32,21 +32,21 @@ public class Villager extends player
      */
      @Override
     protected void loadImages() {
-        String folderPath = "player/";
+        String folderPath = "Knight/";
         
         // --- (Ini adalah SEMUA kode 'load' dari constructor Anda sebelumnya) ---
         
         int idleFrameCount = 12;
         idleImages = new GreenfootImage[idleFrameCount];
         for (int i = 0; i < idleFrameCount; i++) {
-            String filename = "player/idle/idle" + i + ".png";
+            String filename = "Knight/Idle/Idle" + i + ".png";
             idleImages[i] = new GreenfootImage(filename);
         }
         
         int walkRightFrameCount = 5; 
         walkRightImages = new GreenfootImage[walkRightFrameCount];
         for (int i = 0; i < walkRightFrameCount; i++) {
-            String filename = folderPath + "walk/" + "walk_right" + i + ".png"; 
+            String filename = folderPath + "Walk/" + "walk_right" + i + ".png"; 
             walkRightImages[i] = new GreenfootImage(filename);
         }
         
@@ -74,42 +74,42 @@ public class Villager extends player
         int attackRightFrameCount = 5; 
         attackRightImages = new GreenfootImage[attackRightFrameCount];
         for (int i = 0; i < attackRightFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_right" + i + ".png"; 
+            String filename = folderPath + "Attack/" + "Attack" + i + ".png"; 
             attackRightImages[i] = new GreenfootImage(filename);
         }
         
         int attackLeftFrameCount = 5; 
         attackLeftImages = new GreenfootImage[attackLeftFrameCount];
         for (int i = 0; i < attackLeftFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_left" + i + ".png"; 
+            String filename = folderPath + "Attack/" + "Attack" + i + ".png";
             attackLeftImages[i] = new GreenfootImage(filename);
         }
         
         int attackUpFrameCount = 5;
         attackUpImages = new GreenfootImage[attackUpFrameCount];
         for (int i = 0; i < attackUpFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_up" + i + ".png";
+            String filename = folderPath + "Attack/" + "Attack" + i + ".png";
             attackUpImages[i] = new GreenfootImage(filename);
         }
 
         int attackDownFrameCount = 5;
         attackDownImages = new GreenfootImage[attackDownFrameCount];
         for (int i = 0; i < attackDownFrameCount; i++) {
-            String filename = folderPath + "walk_attack/" + "walk_attack_down" + i + ".png";
+            String filename = folderPath + "Attack/" + "Attack" + i + ".png";
             attackDownImages[i] = new GreenfootImage(filename);
         }
         
         int hurtFrameCount = 3; // Contoh
         hurtImages = new GreenfootImage[hurtFrameCount];
         for (int i = 0; i < hurtFrameCount; i++) {
-            String filename = "player/Hurt/hurt" + i + ".png"; // Sesuaikan path
+            String filename = "Knight/Hurt/Hurt" + i + ".png"; // Sesuaikan path
             hurtImages[i] = new GreenfootImage(filename);
         }
 
         int deathFrameCount = 6; // Contoh
         deathImages = new GreenfootImage[deathFrameCount];
         for (int i = 0; i < deathFrameCount; i++) {
-            String filename = "player/Death/death" + i + ".png"; // Sesuaikan path
+            String filename = "Knight/Death/Death" + i + ".png"; // Sesuaikan path
             deathImages[i] = new GreenfootImage(filename);
         }
     }

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=PlayerBullet
+comment0.text=\r\n\ Aktor\ ini\ adalah\ proyektil\ (peluru)\ yang\ ditembakkan\ oleh\ Player.\r\n\ (Versi\ ini\ sekarang\ "Homing"\ /\ mencari\ target)\r\n
+comment1.params=target
+comment1.target=PlayerBullet(Enemy)
+comment1.text=\r\n\ Constructor\ SEKARANG\ menerima\ 'Enemy'\ sebagai\ target,\r\n\ BUKAN\ 'int\ rotation'.\r\n
+comment2.params=
+comment2.target=void\ loadImages()
+comment2.text=\r\n\ Metode\ untuk\ mengisi\ array\ gambar\r\n\ (Saya\ perbaiki\ bug\ 'i\=1'\ menjadi\ 'i\=0')\r\n
+comment3.params=
+comment3.target=void\ animate()
+comment3.text=\r\n\ Metode\ "Mesin\ Animasi\ Mini"\r\n\ (Sudah\ benar,\ saya\ rapikan\ sedikit)\r\n
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\r\n\ act()\ sekarang\ memiliki\ logika\ "Homing"\r\n
+numComments=5

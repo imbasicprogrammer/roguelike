@@ -3,14 +3,10 @@ comment0.target=Vampire
 comment0.text=\r\n\ Musuh\ Goblin.\ Ini\ adalah\ ANAK\ dari\ kelas\ Enemy.\r\n\ Tugasnya\:\r\n\ 1.\ Menyediakan\ gambar\ (loadImages)\r\n\ 2.\ Menyediakan\ AI\ (determineState)\r\n
 comment1.params=
 comment1.target=Vampire()
-comment1.text=\r\n\ Constructor\ Goblin\r\n
 comment2.params=
 comment2.target=void\ loadImages()
 comment2.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 1\:\r\n\ Mengisi\ semua\ array\ 'protected'\ dari\ induk\r\n\ dengan\ gambar-gambar\ milik\ Goblin.\r\n
 comment3.params=
 comment3.target=void\ determineState()
 comment3.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ 2\:\r\n\ Ini\ adalah\ "Otak"\ atau\ AI\ (Artificial\ Intelligence)\ si\ Goblin.\r\n\ Dia\ akan\ otomatis\ mengejar\ dan\ menyerang\ Player.\r\n
-comment4.params=
-comment4.target=void\ onDeath()
-comment4.text=\r\n\ IMPLEMENTASI\ METHOD\ WAJIB\ (dari\ Character)\:\r\n\ *\ Inilah\ yang\ terjadi\ saat\ HP\ musuh\ <\=\ 0.\r\n\ Ini\ adalah\ logika\ yang\ SAMA\ untuk\ SEMUA\ musuh.\r\n
-numComments=5
+numComments=4

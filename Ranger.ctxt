@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Ranger
+comment0.text=\r\n\ Ranger.java\ (Versi\ Auto-Aim\ +\ Homing\ Bullet)\r\n\ -\ Bergerak\ dengan\ Tombol\ Panah\ (dari\ 'player')\r\n\ -\ Menyerang\ dengan\ 'Q'\ (logika\ baru)\r\n\ -\ Serangan\ otomatis\ mencari\ musuh\ terdekat\ (Auto-Aim)\r\n\ -\ Menembakkan\ PlayerBullet\ yang\ 'Homing'\ (mencari\ target)\r\n
+comment1.params=
+comment1.target=Ranger()
+comment2.params=
+comment2.target=void\ loadImages()
+comment2.text=\r\n\ IMPLEMENTASI\ WAJIB\ 1\:\r\n\ Mengisi\ semua\ array\ gambar.\r\n\ *\ PERINGATAN\:\ Bos\ harus\ mengganti\ path\ "player/"\r\n\ di\ bawah\ ini\ agar\ sesuai\ dengan\ folder\ gambar\ Ranger\ Bos\!\r\n
+comment3.params=
+comment3.target=void\ determineState()
+comment3.text=\r\n\ @Override\r\n\ KITA\ MENIMPA\ (OVERRIDE)\ SELURUH\ OTAK\ PLAYER\r\n\ Karena\ logika\ serangan\ kita\ sangat\ berbeda.\r\n
+comment4.params=
+comment4.target=Enemy\ findNearestEnemy()
+comment4.text=\r\n\ METODE\ PEMBANTU\ BARU\r\n\ Mencari\ musuh\ yang\ paling\ dekat\ dengan\ Ranger.\r\n
+comment5.params=rotation
+comment5.target=java.lang.String\ getAttackAnimationState(int)
+comment5.text=\r\n\ METODE\ PEMBANTU\ BARU\r\n\ Menentukan\ animasi\ mana\ ('AttackRight',\ 'Up',\ 'Left',\ 'Down')\r\n\ yang\ harus\ dimainkan\ berdasarkan\ rotasi\ ke\ musuh.\r\n
+comment6.params=state
+comment6.target=void\ performAttack(java.lang.String)
+comment6.text=\r\n\ METHOD\ WAJIB\ (dari\ 'player')\r\n\ Kita\ harus\ punya\ ini\ untuk\ memuaskan\ kelas\ induk,\r\n\ tapi\ kita\ tidak\ akan\ pernah\ menggunakannya\ karena\ kita\ \r\n\ meng-override\ 'determineState()'.\r\n
+numComments=7
