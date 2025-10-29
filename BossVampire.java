@@ -54,6 +54,84 @@ public class BossVampire extends Enemy
                 idleImages[i].fill();
             }
         }
+        
+        int walkRightFrameCount = 5; 
+        walkRightImages = new GreenfootImage[walkRightFrameCount];
+        for (int i = 0; i < walkRightFrameCount; i++) {
+            String filename = folderPath + "Walk/" + "walkright" + i + ".png"; 
+            walkRightImages[i] = new GreenfootImage(filename);
+        }
+        
+        int walkLeftFrameCount = 5; 
+        walkLeftImages = new GreenfootImage[walkLeftFrameCount];
+        for (int i = 0; i < walkLeftFrameCount; i++) {
+            String filename = folderPath + "Walk/" + "walkleft" + i + ".png"; 
+            walkLeftImages[i] = new GreenfootImage(filename);
+        }
+        
+        int walkUpFrameCount = 5;
+        walkUpImages = new GreenfootImage[walkUpFrameCount];
+        for (int i = 0; i < walkUpFrameCount; i++) {
+            String filename = folderPath + "Walk/" + "walkup" + i + ".png";
+            walkUpImages[i] = new GreenfootImage(filename);
+        }
+
+        int walkDownFrameCount = 5;
+        walkDownImages = new GreenfootImage[walkDownFrameCount];
+        for (int i = 0; i < walkDownFrameCount; i++) {
+            String filename = folderPath + "Walk/" + "walkdown" + i + ".png";
+            walkDownImages[i] = new GreenfootImage(filename);
+        }
+        
+        int attackRightFrameCount = 5; 
+        attackRightImages = new GreenfootImage[attackRightFrameCount];
+        for (int i = 0; i < attackRightFrameCount; i++) {
+            String filename = folderPath + "Attack/" + "attackright" + i + ".png"; 
+            attackRightImages[i] = new GreenfootImage(filename);
+        }
+        
+        int attackLeftFrameCount = 5; 
+        attackLeftImages = new GreenfootImage[attackLeftFrameCount];
+        for (int i = 0; i < attackLeftFrameCount; i++) {
+            String filename = folderPath + "Attack/" + "attackleft" + i + ".png"; 
+            attackLeftImages[i] = new GreenfootImage(filename);
+        }
+        
+        int attackUpFrameCount = 5;
+        attackUpImages = new GreenfootImage[attackUpFrameCount];
+        for (int i = 0; i < attackUpFrameCount; i++) {
+            String filename = folderPath + "Attack/" + "attackup" + i + ".png";
+            attackUpImages[i] = new GreenfootImage(filename);
+        }
+
+       int attackDownFrameCount = 5;
+        attackDownImages = new GreenfootImage[attackDownFrameCount];
+        for (int i = 0; i < attackDownFrameCount; i++) {
+            String filename = folderPath + "Attack/" + "VampireAttack" + i + ".png";
+            attackDownImages[i] = new GreenfootImage(filename);
+        } 
+        
+        int hurtFrameCount = 4; // Contoh
+        hurtImages = new GreenfootImage[hurtFrameCount];
+        for (int i = 0; i < hurtFrameCount; i++) {
+            String filename = folderPath + "Hurt/" + "VampireHurt" + i + ".png";
+            hurtImages[i] = new GreenfootImage(filename);
+        }
+        
+        int deathFrameCount = 11; // Contoh
+        deathImages = new GreenfootImage[deathFrameCount];
+        for (int i = 0; i < deathFrameCount; i++) {
+            String filename = folderPath + "Death/" + "VampireDeath" + i + ".png";
+            deathImages[i] = new GreenfootImage(filename);
+        }
+        // (Pastikan Bos setidaknya mengisi 'idleImages' agar tidak error)
+        // Jika Bos belum punya gambar, isi 'idleImages' saja untuk tes:
+        if (idleImages == null) {
+            idleImages = new GreenfootImage[1];
+            idleImages[0] = new GreenfootImage(32, 32); // Gambar kotak 32x32
+            idleImages[0].setColor(Color.RED);
+            idleImages[0].fill();
+        }
         // --- Load Walk, Attack, Hurt, Death (Sama seperti Vampire biasa) ---
         // ...(Salin kode load walk, attack, hurt, death dari Vampire.java,
         //    tapi arahkan path ke folder BossVampire)...
