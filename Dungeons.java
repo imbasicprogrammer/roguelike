@@ -13,6 +13,8 @@ public class Dungeons extends World
     private int enemiesRemaining = 0;
     private int waveTimer = 180;       // Jeda 3 detik
 
+    private String notificationText = ""; // Teks notifikasi saat ini
+    private int notificationTimer = 0;
     // (Opsional) Lacak skor
     // private int score = 0;
 
@@ -35,6 +37,14 @@ public class Dungeons extends World
 
         // (Jangan panggil spawnWave di sini, biarkan act() memulainya)
     }
+    
+    public void showNotification(String text, int durationSeconds) {
+    notificationText = text;
+    notificationTimer = durationSeconds * 60; // Konversi detik ke frame (asumsi 60fps)
+
+    // Langsung tampilkan teksnya
+    showText(notificationText, getWidth() / 2, getHeight() - 50); // Posisi tengah bawah
+    }
 
     /**
      * Metode 'act()' Dunia adalah "Otak" atau "Game Loop" utama.
@@ -42,6 +52,16 @@ public class Dungeons extends World
      */
     public void act()
     {
+        if (notificationTimer > 0) {
+        notificationTimer--; // Kurangi timer
+        if (notificationTimer == 0) {
+            // Timer habis, hapus teks
+            showText("", getWidth() / 2, getHeight() - 50);
+            notificationText = "";
+        }
+        }
+        
+        
         // Hanya cek wave jika ada musuh atau timer berjalan
         if (enemiesRemaining <= 0)
         {
@@ -85,14 +105,24 @@ public class Dungeons extends World
     /**
      * Metode ini dipanggil oleh musuh saat mereka mati.
      */
-    public void enemyDefeated()
-    {
-        enemiesRemaining--;
+    public void enemyDefeated(Enemy defeatedEnemy) // <-- GANTI DENGAN INI
+{
+    enemiesRemaining--; 
 
-        // (Opsional) Tambah skor
-        // score += 10;
-        // showText("Skor: " + score, 70, 570);
+    // --- LOGIKA BARU: BERIKAN XP ---
+    if (defeatedEnemy != null) {
+        int xpGained = defeatedEnemy.getXpValue();
+
+        // Cari player (Gunakan 'player' atau 'PlayableCharacter')
+        List<player> players = getObjects(player.class); 
+        if (!players.isEmpty()) {
+            players.get(0).gainXp(xpGained); // Panggil metode baru di player
+        }
     }
+    // --- AKHIR LOGIKA BARU ---
+
+    // (Opsional: Tambah skor)
+}
 
     /**
      * Mengatur jumlah maksimum wave berdasarkan level saat ini.
@@ -203,8 +233,8 @@ public class Dungeons extends World
     private void preparePlayer()
     {
         // Bos bisa memilih karakter di sini atau dari menu
-        player Ranger = new Ranger(); // Pastikan nama kelas benar
-        addObject(Ranger, 113, 60);
+        player Knight = new Knight(); // Pastikan nama kelas benar
+        addObject(Knight, 113, 60);
     }
 
     /**

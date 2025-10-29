@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=BossVampire
+comment0.text=\r\n\ Boss\ untuk\ Level\ 1.\ Versi\ Vampire\ yang\ lebih\ kuat\r\n\ dengan\ serangan\ serudukan\ (Charge\ Attack).\r\n
+comment1.params=
+comment1.target=BossVampire()
+comment2.params=
+comment2.target=void\ loadImages()
+comment2.text=\r\n\ IMPLEMENTASI\ WAJIB\ 1\:\ Load\ Gambar\r\n\ Isi\ dengan\ gambar-gambar\ Boss\ Vampire\ Bos.\r\n\ Mungkin\ perlu\ gambar\ "charge_windup"\ atau\ "charging".\r\n
+comment3.params=
+comment3.target=void\ determineState()
+comment3.text=\r\n\ IMPLEMENTASI\ WAJIB\ 2\:\ AI\ Boss\ (Otak)\r\n
+comment4.params=targetPlayer
+comment4.target=void\ startChargeWindup(player)
+comment4.text=Metode\ untuk\ memulai\ persiapan\ seruduk
+comment5.params=
+comment5.target=void\ handleChargeWindup()
+comment5.text=Logika\ saat\ dalam\ persiapan\ seruduk\ (diam\ di\ tempat)
+comment6.params=
+comment6.target=void\ handleCharging()
+comment6.text=Logika\ saat\ sedang\ menyeruduk
+comment7.params=
+comment7.target=void\ stopCharge()
+comment7.text=Metode\ untuk\ menghentikan\ serudukan\ &\ memulai\ cooldown
+numComments=8

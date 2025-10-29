@@ -10,6 +10,21 @@ public abstract class player extends Character
     protected int attackCooldown = 0;
     protected int maxAttackCooldown = 30; // 0.5 detik, bisa di-override anak
 
+    protected int xp = 0; 
+
+    public void gainXp(int amount) {
+        xp += amount;
+        // (Nanti bisa tambahkan cek naik level di sini jika perlu)
+        if (getWorld() instanceof Dungeons) {
+        // Tampilkan "+XP" selama 2 detik
+        ((Dungeons)getWorld()).showNotification("+" + amount + " XP", 2);
+        }
+    }
+    
+    public int getXp() {
+        return xp;
+    }
+    
     /**
      * METHOD ABSTRAK BARU:
      * Ini adalah "kontrak". Setiap anak (Knight, Ranger)

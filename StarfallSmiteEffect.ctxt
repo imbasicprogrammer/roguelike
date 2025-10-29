@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=StarfallSmiteEffect
+comment0.text=\r\n\ Efek\ visual\ dan\ damage\ untuk\ skill\ Starfall\ Smite.\r\n\ Muncul,\ meledak\ sekali,\ lalu\ hilang.\r\n
+comment1.params=
+comment1.target=StarfallSmiteEffect()
+comment2.params=
+comment2.target=void\ loadImages()
+comment2.text=\r\n\ Isi\ dengan\ frame-frame\ animasi\ ledakan\ "Starfall\ Smite".\r\n
+comment3.params=world
+comment3.target=void\ addedToWorld(greenfoot.World)
+comment3.text=\r\n\ Dipanggil\ Greenfoot\ SEKALI\ saat\ Aktor\ ditambahkan\ ke\ dunia.\r\n\ Tempat\ sempurna\ untuk\ memberikan\ damage\ AoE.\r\n
+comment4.params=
+comment4.target=void\ applyAreaDamage()
+comment4.text=\r\n\ Memberikan\ damage\ ke\ semua\ musuh\ dalam\ jangkauan.\r\n
+comment5.params=
+comment5.target=void\ animate()
+comment5.text=\r\n\ Memainkan\ animasi\ ledakan\ (tidak\ looping).\r\n
+comment6.params=
+comment6.target=void\ act()
+numComments=7

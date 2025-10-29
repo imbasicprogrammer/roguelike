@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=player
 comment0.text=\r\n\ KELAS\ INDUK\ BARU\ untuk\ SEMUA\ karakter\ yang\ bisa\ dimainkan.\r\n\ (Ini\ adalah\ file\ 'player.java'\ Anda\ yang\ sudah\ di-refactor).\r\n\ Kelas\ ini\ 'abstract'\ karena\ dia\ tidak\ tahu\ cara\ menyerang.\r\n
-comment1.params=state
-comment1.target=void\ performAttack(java.lang.String)
-comment1.text=\r\n\ METHOD\ ABSTRAK\ BARU\:\r\n\ Ini\ adalah\ "kontrak".\ Setiap\ anak\ (Knight,\ Ranger)\r\n\ WAJIB\ mengisi\ metode\ ini\ dengan\ logika\ serangan\ mereka.\r\n\ @param\ state\ Arah\ serangan\ (misal\ "AttackRight")\r\n
+comment1.params=amount
+comment1.target=void\ gainXp(int)
 comment2.params=
-comment2.target=void\ onDeath()
-comment2.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ logika\ kematian\ untuk\ SEMUA\ player.\r\n
-comment3.params=
-comment3.target=void\ determineState()
-comment3.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ "Otak"\ bersama\ untuk\ semua\ Player.\r\n\ Mengelola\ input\ gerak,\ cooldown,\ dan\ memanggil\ 'performAttack()'.\r\n
-numComments=4
+comment2.target=int\ getXp()
+comment3.params=state
+comment3.target=void\ performAttack(java.lang.String)
+comment3.text=\r\n\ METHOD\ ABSTRAK\ BARU\:\r\n\ Ini\ adalah\ "kontrak".\ Setiap\ anak\ (Knight,\ Ranger)\r\n\ WAJIB\ mengisi\ metode\ ini\ dengan\ logika\ serangan\ mereka.\r\n\ @param\ state\ Arah\ serangan\ (misal\ "AttackRight")\r\n
+comment4.params=
+comment4.target=void\ onDeath()
+comment4.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ logika\ kematian\ untuk\ SEMUA\ player.\r\n
+comment5.params=
+comment5.target=void\ determineState()
+comment5.text=\r\n\ IMPLEMENTASI\ WAJIB\ (dari\ Character)\:\r\n\ Ini\ adalah\ "Otak"\ bersama\ untuk\ semua\ Player.\r\n\ Mengelola\ input\ gerak,\ cooldown,\ dan\ memanggil\ 'performAttack()'.\r\n
+numComments=6

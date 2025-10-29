@@ -18,6 +18,7 @@ public class Vampire extends Enemy // (GANTI JADI 'extends Enemy' SETELAH 'Enemy
         this.animationDelay = 15;   // Animasinya lebih lambat
         this.maxHealth = 50;        // HP lebih sedikit
         this.health = this.maxHealth; // Set HP
+        this.xpValue = 15;
     }
 
     /**
