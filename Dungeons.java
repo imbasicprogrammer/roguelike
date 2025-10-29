@@ -30,20 +30,21 @@ public class Dungeons extends World
         preparePlayer(); // Ganti nama prepare() agar lebih jelas
 
         // 3. Bangun map untuk level pertama
-        buildMap(currentLevel);
+        buildMap(2);
 
         // 4. Set Max Waves untuk Level 1
-        setMaxWavesForLevel(currentLevel);
+        //setMaxWavesForLevel(currentLevel);
+        setMaxWavesForLevel(2);
 
         // (Jangan panggil spawnWave di sini, biarkan act() memulainya)
     }
-    
-    public void showNotification(String text, int durationSeconds) {
-    notificationText = text;
-    notificationTimer = durationSeconds * 60; // Konversi detik ke frame (asumsi 60fps)
 
-    // Langsung tampilkan teksnya
-    showText(notificationText, getWidth() / 2, getHeight() - 50); // Posisi tengah bawah
+    public void showNotification(String text, int durationSeconds) {
+        notificationText = text;
+        notificationTimer = durationSeconds * 60; // Konversi detik ke frame (asumsi 60fps)
+
+        // Langsung tampilkan teksnya
+        showText(notificationText, getWidth() / 2, getHeight() - 50); // Posisi tengah bawah
     }
 
     /**
@@ -53,15 +54,14 @@ public class Dungeons extends World
     public void act()
     {
         if (notificationTimer > 0) {
-        notificationTimer--; // Kurangi timer
-        if (notificationTimer == 0) {
-            // Timer habis, hapus teks
-            showText("", getWidth() / 2, getHeight() - 50);
-            notificationText = "";
+            notificationTimer--; // Kurangi timer
+            if (notificationTimer == 0) {
+                // Timer habis, hapus teks
+                showText("", getWidth() / 2, getHeight() - 50);
+                notificationText = "";
+            }
         }
-        }
-        
-        
+
         // Hanya cek wave jika ada musuh atau timer berjalan
         if (enemiesRemaining <= 0)
         {
@@ -106,35 +106,35 @@ public class Dungeons extends World
      * Metode ini dipanggil oleh musuh saat mereka mati.
      */
     public void enemyDefeated(Enemy defeatedEnemy) // <-- GANTI DENGAN INI
-{
-    enemiesRemaining--; 
+    {
+        enemiesRemaining--; 
 
-    // --- LOGIKA BARU: BERIKAN XP ---
-    if (defeatedEnemy != null) {
-        int xpGained = defeatedEnemy.getXpValue();
+        // --- LOGIKA BARU: BERIKAN XP ---
+        if (defeatedEnemy != null) {
+            int xpGained = defeatedEnemy.getXpValue();
 
-        // Cari player (Gunakan 'player' atau 'PlayableCharacter')
-        List<player> players = getObjects(player.class); 
-        if (!players.isEmpty()) {
-            players.get(0).gainXp(xpGained); // Panggil metode baru di player
+            // Cari player (Gunakan 'player' atau 'PlayableCharacter')
+            List<player> players = getObjects(player.class); 
+            if (!players.isEmpty()) {
+                players.get(0).gainXp(xpGained); // Panggil metode baru di player
+            }
         }
-    }
-    // --- AKHIR LOGIKA BARU ---
+        // --- AKHIR LOGIKA BARU ---
 
-    // (Opsional: Tambah skor)
-}
+        // (Opsional: Tambah skor)
+    }
 
     /**
      * Mengatur jumlah maksimum wave berdasarkan level saat ini.
      */
-     private void setMaxWavesForLevel(int level) {
-         if (level == 1) {
-             maxWavesPerLevel = 3;
-         } else if (level == 2) {
-             maxWavesPerLevel = 5;
-         }
-         // Tambahkan else if untuk level selanjutnya
-     }
+    private void setMaxWavesForLevel(int level) {
+        if (level == 1) {
+            maxWavesPerLevel = 3;
+        } else if (level == 2) {
+            maxWavesPerLevel = 5;
+        }
+        // Tambahkan else if untuk level selanjutnya
+    }
 
     /**
      * Mengatur JUMLAH dan JENIS musuh berdasarkan level dan wave.
@@ -168,17 +168,17 @@ public class Dungeons extends World
                 spawnRandomEnemies(Vampire.class, 6);
                 // spawnRandomEnemies(Skeleton.class, 2);
             } else if (wave == 3) {
-                 enemiesRemaining = 8;
-                 spawnRandomEnemies(Vampire.class, 8);
-                 // spawnRandomEnemies(Skeleton.class, 3);
+                enemiesRemaining = 8;
+                spawnRandomEnemies(Vampire.class, 8);
+                // spawnRandomEnemies(Skeleton.class, 3);
             } else if (wave == 4) {
-                 enemiesRemaining = 10;
-                 spawnRandomEnemies(Vampire.class, 10);
-                 // spawnRandomEnemies(Skeleton.class, 10); // Contoh: Full Skeleton
+                enemiesRemaining = 10;
+                spawnRandomEnemies(Vampire.class, 10);
+                // spawnRandomEnemies(Skeleton.class, 10); // Contoh: Full Skeleton
             } else if (wave == 5) { // Wave terakhir di Level 2
-                 enemiesRemaining = 1; // Contoh: Boss
-                 spawnRandomEnemies(Vampire.class, 1);
-                 // addObject(new BossEnemy(), 400, 300); // Harus buat kelas BossEnemy
+                enemiesRemaining = 1; // Contoh: Boss
+                spawnRandomEnemies(Vampire.class, 1);
+                // addObject(new BossEnemy(), 400, 300); // Harus buat kelas BossEnemy
             }
         }
         else {
@@ -460,6 +460,7 @@ public class Dungeons extends World
         }
         else if (levelNumber == 2)
         {
+            setBackground("Tile/sand.jpg");
             // --- KODE LAYOUT LEVEL 2 ---
             // Gunakan metode "Save the World" atau ketik manual
             // untuk mendesain layout baru di sini.
@@ -478,7 +479,38 @@ public class Dungeons extends World
             addObject(new Wall(), 232, 300);
             addObject(new Wall(), 600, 300);
             addObject(new Wall(), 568, 300);
+            
+            
+            Wall wall1 = new Wall();
+            addObject(wall1,404,299);
+            Wall wall2 = new Wall();
+            addObject(wall2,405,328);
+            Wall wall3 = new Wall();
+            addObject(wall3,401,264);
+            Wall wall4 = new Wall();
+            addObject(wall4,398,227);
+
         }
         // Tambahkan 'else if (levelNumber == 3)' untuk level selanjutnya
+    }
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+
+        
     }
 }
